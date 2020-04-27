@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterapp/authentication_bloc/authentication_bloc.dart';
+
 import 'bloc/bloc.dart';
 import 'signin.dart';
 
@@ -13,6 +13,8 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   SigninBloc _signinBloc;
 
@@ -21,6 +23,12 @@ class _SignupPageState extends State<SignupPage> {
     super.initState();
     _signinBloc = BlocProvider.of<SigninBloc>(context);
   }
+
+  String _emailValidMessage;
+
+  String _passwordValidMessage;
+
+  String _confirmPasswordValidMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -86,13 +94,15 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
-                        child: TextField(
+                        child: TextFormField(
+                          controller: _emailController,
                           obscureText: true,
                           textAlign: TextAlign.left,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'samarthagarwal@live.com',
+                            hintText: 'cola@thevita.io',
                             hintStyle: TextStyle(color: Colors.grey),
+                            errorText: _emailValidMessage ?? "올바른 이메일 형식이 아닙니다",
                           ),
                         ),
                       ),
@@ -139,6 +149,7 @@ class _SignupPageState extends State<SignupPage> {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
+                          controller: _passwordController,
                           obscureText: true,
                           textAlign: TextAlign.left,
                           decoration: InputDecoration(
@@ -191,6 +202,7 @@ class _SignupPageState extends State<SignupPage> {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
+                          controller: _confirmPasswordController,
                           obscureText: true,
                           textAlign: TextAlign.left,
                           decoration: InputDecoration(
@@ -239,7 +251,9 @@ class _SignupPageState extends State<SignupPage> {
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           color: Colors.redAccent,
-                          onPressed: () => {},
+                          onPressed: () async {
+                            _submitSignup();
+                          },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               vertical: 20.0,
@@ -277,6 +291,26 @@ class _SignupPageState extends State<SignupPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  Future<void> _submitSignup() async {
+    print("]-----] SignupPage::_submitSignup call [-----[ ");
+    try {
+      if (_validSignup()) {}
+    } catch (error) {}
+  }
+
+  bool _validSignup() {
+    bool result = true;
+    String email = _emailController.text;
+    if (email.isEmpty) {
+      setState(() {
+        _emailValidMessage = "잘못된 메일 형식 입니다.";
+      });
+      result = false;
+    }
+    return result;
   }
 }

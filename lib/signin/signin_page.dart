@@ -41,7 +41,10 @@ class _SigninPageState extends State<SigninPage> {
               SnackBar(
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('Signin Failure'), Icon(Icons.error)],
+                  children: [
+                    Text('${state.failureMessage}'),
+                    Icon(Icons.error)
+                  ],
                 ),
                 backgroundColor: Colors.red,
               ),
@@ -323,12 +326,12 @@ class _SigninPageState extends State<SigninPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
                                               children: <Widget>[
-                                                Icon(
-                                                  const IconData(0xea90,
-                                                      fontFamily: 'icomoon'),
-                                                  color: Colors.white,
-                                                  size: 15.0,
-                                                ),
+//                                                Icon(
+//                                                  const IconData(0xea90,
+//                                                      fontFamily: 'icomoon'),
+//                                                  color: Colors.white,
+//                                                  size: 15.0,
+//                                                ),
                                                 Text(
                                                   "FACEBOOK",
                                                   textAlign: TextAlign.center,
@@ -379,12 +382,12 @@ class _SigninPageState extends State<SigninPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
                                               children: <Widget>[
-                                                Icon(
-                                                  const IconData(0xea88,
-                                                      fontFamily: 'icomoon'),
-                                                  color: Colors.white,
-                                                  size: 15.0,
-                                                ),
+//                                                Icon(
+//                                                  const IconData(0xea88,
+//                                                      fontFamily: 'icomoon'),
+//                                                  color: Colors.white,
+//                                                  size: 15.0,
+//                                                ),
                                                 Text(
                                                   "GOOGLE",
                                                   textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
@@ -9,7 +10,6 @@ import 'package:flutterapp/user_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'authentication_event.dart';
-
 part 'authentication_state.dart';
 
 class AuthenticationBloc
@@ -89,6 +89,7 @@ class AuthenticationBloc
         "Authorization": accessToken,
         'Content-Type': 'application/json;charset=UTF-8',
       };
+
       final Response response = await _dio.post(_endpoint + url, data: body);
       return response.data;
     } on DioError catch (dioError) {
@@ -184,6 +185,7 @@ class AuthenticationBloc
 
   _handleDioError(DioError dioError) {
     print("]-----] AuthenticationBloc::error [-----[ $dioError");
+
     if (dioError.response != null) {
       print(
           "]-----] AuthenticationBloc::basicAuth.e.response.data [-----[ ${dioError.response.data}");
@@ -192,7 +194,8 @@ class AuthenticationBloc
       print(
           "]-----] AuthenticationBloc::basicAuth.e.response.request [-----[ ${dioError.response.request}");
       if (dioError.response.statusCode == 401) {
-        this.add(LoggedOut());
+//        this.add(LoggedOut());
+        throw Exception(ErrorMessage.getValue(500100));
       } else {
         if (dioError.response.data['code'] != null) {
           throw Exception(
@@ -206,10 +209,18 @@ class AuthenticationBloc
           "]-----] AuthenticationBloc::basicAuth.e.request [-----[ ${dioError.request}");
       print(
           "]-----] AuthenticationBloc::basicAuth.e.message[-----[ ${dioError.message}");
+      if (dioError.error is SocketException) {
+        print(
+            "]-----] AuthenticationBloc::basicAuth.e.SocketException[-----[ ${dioError.error}");
+        throw Exception(ErrorMessage.getValue(999999));
+      } else {
+        throw Exception(dioError.message);
+      }
     }
   }
 
   _handleError(error) {
     print("]-----] AuthenticationBloc::basicAuth.error [-----[ $error");
+    throw Exception(error);
   }
 }

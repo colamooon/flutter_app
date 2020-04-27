@@ -22,7 +22,6 @@ class DefaultPage extends StatelessWidget {
         image: DecorationImage(
           colorFilter: ColorFilter.mode(
               Colors.black.withOpacity(0.1), BlendMode.dstATop),
-          image: AssetImage('assets/images/mountains.jpg'),
           fit: BoxFit.cover,
         ),
       ),

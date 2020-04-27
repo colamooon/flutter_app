@@ -1,29 +1,36 @@
 import 'package:meta/meta.dart';
 
 @immutable
-class SigninState {
+class SignupState {
   final bool isEmailValid;
   final bool isPasswordValid;
+  final bool isConfirmPasswordValid;
+  final bool isYearValid;
   final bool isSubmitting;
   final bool isSuccess;
   final bool isFailure;
   final String failureMessage;
 
-  bool get isFormValid => isEmailValid && isPasswordValid;
+  bool get isFormValid =>
+      isEmailValid && isPasswordValid && isConfirmPasswordValid && isYearValid;
 
-  SigninState({
+  SignupState({
     @required this.isEmailValid,
     @required this.isPasswordValid,
+    @required this.isConfirmPasswordValid,
+    @required this.isYearValid,
     @required this.isSubmitting,
     @required this.isSuccess,
     @required this.isFailure,
     @required this.failureMessage,
   });
 
-  factory SigninState.empty() {
-    return SigninState(
+  factory SignupState.empty() {
+    return SignupState(
       isEmailValid: true,
       isPasswordValid: true,
+      isConfirmPasswordValid: true,
+      isYearValid: true,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
@@ -31,10 +38,12 @@ class SigninState {
     );
   }
 
-  factory SigninState.loading() {
-    return SigninState(
+  factory SignupState.loading() {
+    return SignupState(
       isEmailValid: true,
       isPasswordValid: true,
+      isConfirmPasswordValid: true,
+      isYearValid: true,
       isSubmitting: true,
       isSuccess: false,
       isFailure: false,
@@ -42,10 +51,12 @@ class SigninState {
     );
   }
 
-  factory SigninState.failure(failureMessage) {
-    return SigninState(
+  factory SignupState.failure(failureMessage) {
+    return SignupState(
       isEmailValid: true,
       isPasswordValid: true,
+      isConfirmPasswordValid: true,
+      isYearValid: true,
       isSubmitting: false,
       isSuccess: false,
       isFailure: true,
@@ -53,10 +64,12 @@ class SigninState {
     );
   }
 
-  factory SigninState.success() {
-    return SigninState(
+  factory SignupState.success() {
+    return SignupState(
       isEmailValid: true,
       isPasswordValid: true,
+      isConfirmPasswordValid: true,
+      isYearValid: true,
       isSubmitting: false,
       isSuccess: true,
       isFailure: false,
@@ -64,30 +77,40 @@ class SigninState {
     );
   }
 
-  SigninState update({
+  SignupState update({
     bool isEmailValid,
     bool isPasswordValid,
+    bool isConfirmPasswordValid,
+    bool isYearValid,
   }) {
     return copyWith(
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
+      isConfirmPasswordValid: isConfirmPasswordValid,
+      isYearValid: isYearValid,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
     );
   }
 
-  SigninState copyWith({
+  SignupState copyWith({
     bool isEmailValid,
     bool isPasswordValid,
+    bool isConfirmPasswordValid,
+    bool isYearValid,
+    bool isSubmitEnabled,
     bool isSubmitting,
     bool isSuccess,
     bool isFailure,
     String failureMessage,
   }) {
-    return SigninState(
+    return SignupState(
       isEmailValid: isEmailValid ?? this.isEmailValid,
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
+      isConfirmPasswordValid:
+          isConfirmPasswordValid ?? this.isConfirmPasswordValid,
+      isYearValid: isYearValid ?? this.isYearValid,
       isSubmitting: isSubmitting ?? this.isSubmitting,
       isSuccess: isSuccess ?? this.isSuccess,
       isFailure: isFailure ?? this.isFailure,
@@ -97,9 +120,11 @@ class SigninState {
 
   @override
   String toString() {
-    return '''SigninState {
+    return '''SignupState {
       isEmailValid: $isEmailValid,
-      isPasswordValid: $isPasswordValid,
+      isPasswordValid: $isPasswordValid,      
+      isConfirmPasswordValid: $isConfirmPasswordValid,      
+      isYearValid: $isYearValid,      
       isSubmitting: $isSubmitting,
       isSuccess: $isSuccess,
       isFailure: $isFailure,
