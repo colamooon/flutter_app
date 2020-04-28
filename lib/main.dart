@@ -53,7 +53,7 @@ class App extends StatelessWidget {
         builder: (context, state) {
           ScreenUtil.instance = ScreenUtil()..init(context);
           if (state is Unauthenticated) {
-            return SigninScreen();
+            return HomeScreen();
           }
           if (state is Authenticated) {
             return HomeScreen();

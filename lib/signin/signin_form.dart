@@ -78,7 +78,7 @@ class _SigninFormState extends State<SigninForm> {
             child: SafeArea(
               child: SingleChildScrollView(
                 child: Container(
-//                  color: Colors.white,
+                  color: Colors.white,
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   padding: EdgeInsets.only(
@@ -237,6 +237,7 @@ class _SigninFormState extends State<SigninForm> {
                         ),
                       ),
                       Container(
+//                        color: Colors.white,
                         margin: EdgeInsets.only(top: 14.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
