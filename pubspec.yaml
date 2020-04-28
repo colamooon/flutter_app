@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_bloc: ^4.0.0
   rxdart: ^0.24.0
   equatable: ^1.1.1
@@ -86,8 +88,36 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
-  fonts:
-    - family: icomoon
-      fonts:
-        - asset: assets/fonts/IcoMoon.ttf
+    - assets/images/logos/
+    - assets/images/icons/
 
+  fonts:
+    - family: NotoSansCJKkr-Thin
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Thin.otf
+          weight: 400
+    - family: NotoSansCJKkr-Light
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Light.otf
+          weight: 400
+    - family: NotoSansCJKkr-DemiLight
+      fonts:
+        - asset: assets/fonts/NotoSansKR-DemiLight.otf
+          weight: 400
+    - family: NotoSansCJKkr-Regular
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Regular.otf
+          weight: 400
+
+    - family: NotoSansCJKkr-Medium
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Medium.otf
+          weight: 400
+    - family: NotoSansCJKkr-Bold
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Bold.otf
+          weight: 400
+    - family: NotoSansCJKkr-Black
+      fonts:
+        - asset: assets/fonts/NotoSansKR-Black.otf
+          weight: 400

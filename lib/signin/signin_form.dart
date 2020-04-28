@@ -66,24 +66,7 @@ class _SigninFormState extends State<SigninForm> {
               ),
             );
         }
-//        if (state.isSubmitting) {
-//          Scaffold.of(context)
-//            ..hideCurrentSnackBar()
-//            ..showSnackBar(
-//              SnackBar(
-//                content: Row(
-//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                  children: [
-//                    Text('로그인 중...'),
-//                    CircularProgressIndicator(
-//                      backgroundColor: Colors.grey.withOpacity(0.5),
-//                      valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
-//                    ),
-//                  ],
-//                ),
-//              ),
-//            );
-//        }
+
         if (state.isSuccess) {
           BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
         }
@@ -108,15 +91,25 @@ class _SigninFormState extends State<SigninForm> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+//                      Container(
+//                        padding: const EdgeInsets.all(20),
+//                        decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.circular(5),
+//                        ),
+//                        child: SvgPicture.asset(
+//                          'assets/images/logos/logo-icon-small.svg',
+//                          width: ScreenUtil().setWidth(72),
+//                          fit: BoxFit.fill,
+//                        ),
+//                      ),
                       Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/images/logos/logo-icon-small.svg',
-                          width: ScreenUtil().setWidth(72),
-                          fit: BoxFit.fill,
+                        padding: EdgeInsets.only(bottom: 50.0),
+                        child: Center(
+                          child: Icon(
+                            Icons.headset_mic,
+                            color: Colors.redAccent,
+                            size: 80.0,
+                          ),
                         ),
                       ),
                       Container(
