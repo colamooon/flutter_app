@@ -18,18 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          "VITAMEANs",
-          style: TextStyle(
-            fontFamily: "NotoSansCJKkr-Bold",
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
+
+        title: Image(
+          image: AssetImage('assets/images/logos/heartit-logo-217x64.png'),
+          width: ScreenUtil().setWidth(75),
         ),
-//        title: Image(
-//          image: AssetImage('assets/images/logos/heartit-logo-217x64.png'),
-//          width: ScreenUtil().setWidth(75),
-//        ),
         actions: <Widget>[
           InkResponse(
             child: Icon(Icons.view_headline),
