@@ -25,8 +25,6 @@ class _ProductListState extends State<ProductList> {
     super.initState();
     _productBloc = BlocProvider.of<ProductBloc>(context);
     _scrollController.addListener(_onScroll);
-    _productBloc = ProductBloc(
-        authenticationBloc: BlocProvider.of<AuthenticationBloc>(context));
     _productBloc.add(ProductsLoad());
   }
 
